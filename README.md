@@ -84,9 +84,7 @@ React has a vast ecosystem built around it.
 - Create a new project: `npm create vite@latest <app name>`
 - Start in an existing folder: `npm create vite@latest .`
 
-### Key Concepts
-
-- **Hot Module Replacement (HMR)**: 
+- **Vite offers, Hot Module Replacement (HMR)**: 
     - Changes to your code often update in the browser without a full reload.
     - Can see results nearly instantly!
     - That makes development faster and improve developer experience. 
@@ -110,13 +108,13 @@ React has a vast ecosystem built around it.
 
 ### Entry Point
 
-- **(`App.js`)**: 
+- **`App.js`**: 
     - Usually the entry point.
     - Serves as the root component from which other components are nested.
 
 - **Styles and Assets**: 
     - CSS: 
-        - `import './App.css';`
+        - `import './main.css';`
     - Images:
         - `import imageName from './path/to/image.jpg'`
         - Usage: `<img src={imageName} alt="Image Description" />`
@@ -129,8 +127,10 @@ React has a vast ecosystem built around it.
     - It looks like HTML but it is not.
     - It allows JavaScript expressions `{}` within it.
         - **For Example**: `<p>Today is {new Date().toDateString()}</p>`
-    - Gets transformed into regular JavaScript by tools like Vite.
-    - **Comments**:  `{/* This is a JSX comment */} `
+    - Gets transformed into regular JavaScript by tools like Vite.\
+
+    - **Comments**:  
+        - `{/* This is a JSX comment */} `
 
 ### Alternatives to Vite
 
