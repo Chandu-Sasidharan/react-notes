@@ -11,7 +11,6 @@
 - Better developer experience with JavaScript libraries like React.
 
 ### What is React?
-<!-- 
 
 - A library for building user interfaces.
 - Developed and open-sourced by Facebook (now Meta).
@@ -133,12 +132,7 @@ React has a vast ecosystem built around it.
     - Gets transformed into regular JavaScript by tools like Vite.
     - **Comments**:  `{/* This is a JSX comment */} `
 
-- **Conditional Rendering**: 
-    - Dynamically render components or elements based on certain conditions.
-    - `if/else` statements inside JSX (e.g., `{showThis && <p>Text to show</p>}`)
-    - Ternary operator for quick inline conditions.
-
 ### Alternatives to Vite
 
 - Vite is a modern, fast tool for starting a React project.
-- Alternatives like "Create React App" (CRA) also exist and remain popular. -->
+- Alternatives like "Create React App" (CRA) also exist and remain popular.
