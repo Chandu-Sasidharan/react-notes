@@ -87,3 +87,21 @@ function WelcomeMessage({ isLoggedIn }) {
   );
 }
 ```
+
+## Generating Lists with Array Map
+
+- `map` lets you loop over data, creating elements for each item.
+- Important to use a unique `key` prop for each element.
+- That help React identify which items have changed or modified.
+
+```javascript
+function ItemList({ items }) {
+  return (
+    <ul>
+      {items.map((item) => (
+        <li key={item.id}>{item.name}</li>
+      ))}
+    </ul>
+  );
+}
+```
