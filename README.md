@@ -72,3 +72,18 @@ function Greeting({ name }) {
   return <p>Hello, {name}!</p>;
 }
 ```
+
+## Conditional Rendering
+
+- Render components or elements conditionally based on props or state.
+- Common patterns include using ternary operators or logical && operator.
+
+```javascript
+function WelcomeMessage({ isLoggedIn }) {
+  return (
+    <div>
+      {isLoggedIn ? <Greeting /> : <p>Please log in.</p>}
+    </div>
+  );
+}
+```
