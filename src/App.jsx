@@ -1,11 +1,11 @@
-import reactLogo from './assets/react.svg';
+import Counter from "./component/Counter/counter";
+import Num from "./component/Counter/num";
 
 export default function App() {
-    return (
-        <>
-            <h1 className="text-xl">Hello world!</h1>
-            <img src={reactLogo} alt="react logo" />
-            <img src="/vite.svg" alt="vite logo" />
-        </>
-    )
+  return (
+    <>
+      {/* <Counter /> */}
+      <Num />
+    </>
+  );
 }
