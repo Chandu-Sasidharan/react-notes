@@ -1,10 +1,12 @@
-import Counter from "./counter";
+// import Counter from "./counter";
+import Posts from "./posts";
 
 export default function App() {
     return (
         <>
-            <Counter />
-            <Counter />                
+            {/* <Counter /> */}
+            {/* <Counter /> */}
+            <Posts />
         </>
     )
 }
