@@ -8,7 +8,7 @@ export default function Form() {
     
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        
+
         setFromData( prevValue => ({ 
             ...prevValue, 
             [name]: value 
