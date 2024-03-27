@@ -68,3 +68,28 @@
   - Empty array (`[]`) : Runs only on the first render.
   - Array with state/props (`[someState, someProp]`).
     - Runs when one of those values change.
+
+- **Cleanup**:
+  - You can return a function from `useEffect` to do cleanup tasks.
+  - Removing event listeners, clearing timers etc. are cleanup operations.
+
+  ```javascript
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    // function that updates state based on window width
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Subscribe to the window resize event when the component mounts
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup function to unsubscribe from the resize event
+    // This function is returned from the useEffect hook
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+
+  }, []);
+  ```
