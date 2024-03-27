@@ -1,9 +1,10 @@
-import SingleInput from './single-input';
+// import SingleInput from './single-input';
+import Form from './form';
 
 export default function App() {
     return (
         <>
-           <SingleInput />
+           <Form />
         </>
     )
 }
