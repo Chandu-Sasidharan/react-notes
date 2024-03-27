@@ -1,7 +1,8 @@
 // import Counter from "./counter";
 // import Posts from "./posts";
+// import CleanUpExample from "./clean-up";
 
-import CleanUpExample from "./clean-up";
+import ObjectAsState from "./object-as-state";
 
 export default function App() {
     return (
@@ -9,7 +10,8 @@ export default function App() {
             {/* <Counter /> */}
             {/* <Counter /> */}
             {/* <Posts /> */}
-            <CleanUpExample />
+            {/* <CleanUpExample /> */}
+            <ObjectAsState />
         </>
     )
 }
