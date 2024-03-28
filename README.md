@@ -50,3 +50,44 @@ function FocusInputComponent() {
   return <input ref={inputRef} type="text" />;
 }
 ```
+
+### Use Case 2: Direct Style Manipulation
+
+- Another use case for `useRef` is direct manipulation of the `style` property.
+- Useful for dynamic styling that depends on complex conditions or interactions.
+- Things that cannot conveniently expressed through React state.
+
+```javascript
+import React, { useRef } from 'react';
+
+function HighlightOnHover() {
+  // Reference to the element we want to style directly
+  const headerRef = useRef(null);
+
+  // Function to change style
+  const highlightHeader = () => {
+    if (headerRef.current) {
+      headerRef.current.style.backgroundColor = '#ffd700'; // Gold color
+    }
+  };
+
+  // Function to reset style
+  const resetHeaderStyle = () => {
+    if (headerRef.current) {
+      headerRef.current.style.backgroundColor = ''; // Reset to stylesheet value
+    }
+  };
+
+  return (
+    <div>
+      <h1 ref={headerRef}>Hover Over the Button to Highlight Me</h1>
+      <button
+        onMouseEnter={highlightHeader}
+        onMouseLeave={resetHeaderStyle}
+      >
+        Hover Me
+      </button>
+    </div>
+  );
+}
+```
