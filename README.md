@@ -52,3 +52,61 @@ today:
 
 - **Link**: 
   - Replaces <a> tags for navigation within your SPA.
+
+### Catching Unmatched Routes
+
+- Use a <Route> with a `*` path.
+- Place it at the end of your route list.
+
+###  Nested Routes
+
+- Create a tree-like structure for your URL paths for related sections.
+
+- Example:
+```js
+<Route path="/dashboard" element={<Dashboard />}>
+
+  <Route index element={<Welcome />} />
+  <Route path="profile" element={<UserProfile />} />
+  <Route path="settings" element={<UserSettings />} />
+
+</Route>
+```
+
+- Shared layouts: 
+  - Parent routes can render navigation, header, sidebar etc.
+
+- Organization:
+  - Logically groups routes together.
+
+- Index Route:
+  - Defines the default content nested within a parent route.
+
+### Rendering nested routes
+
+-  Child routes render into the parent route's <Outlet> component.
+
+- **Outlet**: 
+  - A component that renders the current route selected. 
+  - It's used in nested routing where a route might have children routes.
+  - It acts as a placeholder for the nested routes to render their components.
+
+- Example:
+```js
+import { Outlet, Link } from 'react-router-dom';
+
+function Dashboard() {
+  return (
+    <>
+      <nav>
+        <Link to="/profile">Profile</Link>
+        <Link to="/settings">Settings</Link>
+      </nav>
+      
+      <Outlet />
+    </>
+  );
+}
+
+export default Dashboard;
+```

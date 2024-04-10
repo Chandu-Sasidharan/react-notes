@@ -1,21 +1,31 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 import Home from "./pages/home";
 import About from "./pages/about";
+import Header from "./component/header";
+import NotFound from "./pages/not-found"
+import Dashboard from "./pages/dashboard";
+import Welcome from "./pages/dashboard/welcome";
+import Profile from "./pages/dashboard/profile";
+import Settings from "./pages/dashboard/settings";
+import NotFoundDashboard from "./pages/dashboard/not-found";
 
 export default function App() {
     return (
-        <BrowserRouter>
-            <nav className="navbar bg-slate-200">
-                <ul className="space-x-5">
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/about">About</Link></li>
-                </ul>
-            </nav>
-
+        <>
+            <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
+
+                <Route path="/dashboard" element={<Dashboard />}>
+                    <Route index element={<Welcome />} />
+                    <Route path="profile" element={<Profile />} />
+                    <Route path="settings" element={<Settings />} />
+                    <Route path="*" element={<NotFoundDashboard />} />
+                </Route>
+
+                <Route path="*" element={<NotFound />} />
             </Routes>
-        </BrowserRouter>
+        </>
     )
 }
