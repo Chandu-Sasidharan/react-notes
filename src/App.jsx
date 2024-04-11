@@ -1,13 +1,21 @@
-import reactLogo from './assets/react.svg';
+import { Routes, Route } from "react-router-dom";
+import Header from "./header";
+import AboutUs from "./about-us";
+import ContactUs from "./contact-us";
+import Home from "./home";
+import NotFound from "./not-found";
 
 export default function App() {
     return (
         <>
-            <h1 className="text-xl">Hello world!</h1>
-            <img src={reactLogo} alt="react logo" />
-            
-            {/* Stuffs in the public folder can be accessed from the root of the website */}
-            <img src="/vite.svg" alt="vite logo" />
+            <Header />
+
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<AboutUs />} />
+                <Route path="/contact-us" element={<ContactUs />} />
+                <Route path="*" element={<NotFound />} />
+            </Routes>
         </>
     )
 }
