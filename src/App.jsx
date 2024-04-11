@@ -4,6 +4,10 @@ import AboutUs from "./about-us";
 import ContactUs from "./contact-us";
 import Home from "./home";
 import NotFound from "./not-found";
+import Dashboard from "./dashboard";
+import Welcome from "./welcome";
+import Profile from './profile';
+import Settings from './settings';
 
 export default function App() {
     return (
@@ -13,7 +17,15 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<AboutUs />} />
+
+                <Route path="/dashboard" element={<Dashboard />}>
+                    <Route index element={<Welcome />} />
+                    <Route path="profile" element={<Profile />} />
+                    <Route path="settings" element={<Settings />} />
+                </Route>
+                
                 <Route path="/contact-us" element={<ContactUs />} />
+
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </>
