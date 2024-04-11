@@ -110,3 +110,78 @@ today:
 
   export default Dashboard;
   ```
+
+## Navigation
+
+- Effective navigation is crucial for any web application. 
+- React Router provides several tools to help build and manage navigation.
+
+### `<Link>`
+
+- Replaces traditional <a> tags.
+- Prevents full page reloads, essential for SPA behavior.
+- Example: <Link to="/about">About Us</Link>
+- It changes the URL and updates the browser's history.
+
+### `<NavLink>` : Active styling
+
+- Extends <Link> functionality.
+- Adds a special `active` class when the current URL matches the Link's to prop.
+- You can customize the classname if you want.
+- Yop can even handle the styling yourself, using a callback function.
+- Example: <NavLink to="/about">About</NavLink>
+- Great for visually highlighting the active section in navigation.
+
+## Redirecting Programmatically
+
+- **useNavigate** hook:
+  - `useNavigate` is a hook that allows programmatic navigation.
+  - It gives you a function called navigate.
+  - Use it inside event handlers, effects, etc., to change the URL.
+
+ Example:
+  ```jsx
+  import { useNavigate } from 'react-router-dom';
+
+  function Form() {
+    const navigate = useNavigate();
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      // Form processing logic here
+      navigate('/success');
+    }
+
+    return (
+      <form onSubmit={handleSubmit}>
+        {/* form fields */}
+        <button type="submit">Submit</button>
+      </form>
+    );
+  }
+  ```
+
+  ## Redirecting with <Navigate>
+
+- **Declarative Approach**: 
+  - Render the <Navigate> component to trigger redirection.
+  - `<Navigate>` component changes the current location when rendered.
+
+- **Common Uses**:
+  - Protecting routes (redirect unauthorized users away).
+  - After successful form submissions.
+
+  - Example:
+  ```jsx
+  import { Navigate } from 'react-router-dom';
+
+  function MyComponent() {
+    const isLoggedIn = false; 
+
+    if (!isLoggedIn) {
+        return <Navigate to="/login" replace/> 
+    }
+
+    // ... Render content for logged in users
+  }
+    ```

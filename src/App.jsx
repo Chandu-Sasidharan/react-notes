@@ -8,6 +8,8 @@ import Dashboard from "./dashboard";
 import Welcome from "./welcome";
 import Profile from './profile';
 import Settings from './settings';
+import Success from "./success";
+import Login from "./login";
 
 export default function App() {
     return (
@@ -25,6 +27,8 @@ export default function App() {
                 </Route>
                 
                 <Route path="/contact-us" element={<ContactUs />} />
+                <Route path="/success" element={<Success />} />
+                <Route path="/login" element={<Login />} />
 
                 <Route path="*" element={<NotFound />} />
             </Routes>
