@@ -10,6 +10,8 @@ import Profile from './profile';
 import Settings from './settings';
 import Success from "./success";
 import Login from "./login";
+import Posts from "./posts";
+import PostDetails from "./posts/post-details";
 
 export default function App() {
     return (
@@ -29,6 +31,8 @@ export default function App() {
                 <Route path="/contact-us" element={<ContactUs />} />
                 <Route path="/success" element={<Success />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/posts" element={<Posts />} />
+                <Route path="/posts/:postId" element={< PostDetails />} />
 
                 <Route path="*" element={<NotFound />} />
             </Routes>
