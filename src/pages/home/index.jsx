@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import classNames from "classnames";
-import { ThemeContext } from "../App";
+import { ThemeContext } from "../../App";
 
 export default function Home() {
     const { isDarkMode } = useContext(ThemeContext);
