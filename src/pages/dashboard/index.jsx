@@ -1,4 +1,5 @@
 import { NavLink, Link, Outlet, Navigate } from "react-router-dom"
+import { useUser } from "../../store/user-context";
 
 // import "./index.css";
 
@@ -7,9 +8,9 @@ const isActive = ({ isActive }) => (
 );
 
 export default function Dashboard() {
-    const isLoggedIn = true;
+    const { user } = useUser();
 
-    if (!isLoggedIn) {
+    if (!user) {
         return <Navigate to="/login" replace />
     }
 
