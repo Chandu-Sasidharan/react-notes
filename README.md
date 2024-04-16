@@ -59,3 +59,37 @@ today:
   ```javascript
   const isDarkModeOn = useContext(ThemeContext);
   ```
+
+## Custom Context Provider
+
+- For more complex state logic, create a separate context provider component.
+
+```javascript
+export const UserProvider = ({ children }) => {
+    const [user, setUser] = useState(null);
+
+    // other logic
+    
+    return (
+        <UserContext.Provider value={{ user }}>
+            {children}
+        </UserContext.Provider>
+    );
+};
+```
+
+- Use the provider in your main component:
+```javascript
+import { UserProvider } from ...
+function App() {
+    return (
+        <UserProvider>
+            {/* Components that need access to this context */}
+        </UserProvider>
+    );
+}
+```
+
+### Best Practices
+- Do not add all local states to the context, until unless a need arrives.
+- Use context for application-wide state like theme or user authentication.

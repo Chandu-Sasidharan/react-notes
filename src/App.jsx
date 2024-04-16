@@ -15,7 +15,7 @@ import Posts from "./posts";
 import PostDetails from "./posts/post-details";
 
 // create a theme context
-export const ThemeContext = createContext(false);
+export const ThemeContext = createContext(true);
 
 export default function App() {
     const [isDarkMode, setIsDarkMode] = useState(false);
