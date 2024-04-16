@@ -1,3 +1,4 @@
+import { createContext, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./header";
 import AboutUs from "./about-us";
@@ -13,9 +14,17 @@ import Login from "./login";
 import Posts from "./posts";
 import PostDetails from "./posts/post-details";
 
+// create a theme context
+export const ThemeContext = createContext(false);
+
 export default function App() {
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
     return (
-        <>
+        <ThemeContext.Provider value={{
+            isDarkMode,
+            setIsDarkMode
+        }}>
             <Header />
 
             <Routes>
@@ -36,6 +45,6 @@ export default function App() {
 
                 <Route path="*" element={<NotFound />} />
             </Routes>
-        </>
+        </ThemeContext.Provider>
     )
 }

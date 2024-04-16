@@ -1,50 +1,61 @@
 ---
-lastdays:
-  - we learnt routing with react router dom
+yesterday:
+  - you learnt dynamic routes and route params
 today:
-  - we will talk about route parameters
+  - we will talk about state management
 ---
 
-# Dynamic Route Paths (The Idea)
+# State Management
 
-- You can capture parts of the URL to use in your components.
-- Useful for things like fetching specific data.
-- Let components respond to parameters passed through the route.
+- Until now we were dealing only with local state.
 
-## Route Parameters
+- **Local State**:
+  - Managed within a single component with useState hook.
+  - Suitable for data needed only by that component or its direct children.
+  
+- **Prop Drilling**:
+  - The process of passing data down through multiple layers of nested components.
+  - Often times, those intermediate components don't directly need it themselves.
+  - They still have to recieve it and pass it down to its children.
+  - Results in lots of prop passing at each level.
+  - This makes intermediate components less reusable.
 
-- Route parameters are tokens in the URL path
-- Its like a variable that can be changed. 
+![Prop Drilling](https://react.dev/_next/image?url=%2Fimages%2Fdocs%2Fdiagrams%2Fpassing_data_prop_drilling.png&w=1920&q=75)
 
-## Creating Dynamic Route Paths with React Router Dom
+## Global State
 
--**Syntax**:
-  - Use a colon followed by a parameter name in your route path.
-  - This indicates to React Router that this part of the route is variable.
+- Data shared across many components in your application.
+- Used for data that needs to be accessible by many parts of the application.
+- Examples: User authentication status, theme settings etc.
+- Tools like Redux, Zustand, or React Context can help manage global state.
 
-- Example:
-```js
-<Route path="/posts/:postId" element={<PostDetails />} />
-```
+## Context API
 
-- In this example, `:postId` is a route parameter that can be any value.
-- It allows the `PostDetails` component to load data based on the `postId`.
+- Provides a way to share values like global data between components.
+- It does so without having to explicitly pass a prop through every level.
 
-## `useParams` Hook
+## Steps involved
 
-- React Router provides the `useParams` hook to access route parameters.
+1. **Creating Context**:
 
-- Example:
-```js
-import { useParams } from 'react-router-dom';
+  ```javascript
+  const ThemeContext = createContext(false); // initial value
+  ```
+  - This creates a context object. 
+  - The argument (`false`) is the default value for the context.
 
-function PostDetails() {
-    const { postId } = useParams(); 
-    // Now you can use postId
-}
-```
+2. **Provide the value**:
+  - Wrap components that need the context with a Provider.
+  - Set the value you want to share.
 
-## Key points
+  ```javascript
+  <ThemeContext.Provider value={isDarkMode}> 
+    {/* Components here can access dark mode state */}
+  </ThemeContext.Provider>
+  ```
+3. **Consume the Value**:
+  - Use the useContext hook inside a component within the Provider tree.
 
-- Match the names in the route path (/:postId) and in useParams().
-- Helps you fetch and display data specific to that URL section.
+  ```javascript
+  const isDarkModeOn = useContext(ThemeContext);
+  ```
