@@ -21,7 +21,7 @@ export default function Header() {
                 className="btn btn-primary btn-xs"
                 onClick={toggleDarkMode}
             >
-                Toggle Theme
+                { isDarkMode ? "Light Mode" : "Dark Mode"}
             </button>
         </div>
     )
