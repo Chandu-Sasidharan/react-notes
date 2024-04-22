@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import classNames from "classnames";
 import { ThemeContext } from "../../App";
+import Counter from "../../components/counter.jsx";
 
 export default function Home() {
     const { isDarkMode } = useContext(ThemeContext);
@@ -16,6 +17,7 @@ export default function Home() {
     return (
         <div className={classnames}>
             <h1>Home Page</h1>
+            <Counter />
         </div>
     )
 }

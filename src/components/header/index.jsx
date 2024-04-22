@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
-import { ThemeContext } from "../App"
+import { ThemeContext } from "../../App"
 
 export default function Header() {
     const { isDarkMode, setIsDarkMode } = useContext(ThemeContext);

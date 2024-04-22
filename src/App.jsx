@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import Header from "./header";
+import Header from "./components/header";
 import ContactUs from "./pages/contact-us";
 import Home from "./pages/home";
 import NotFound from "./pages/not-found";
