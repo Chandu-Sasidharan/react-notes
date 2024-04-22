@@ -1,92 +1,84 @@
----
-lastday:
-  - you have learnt to work with context api
-today:
-  - we are going to talk about consolidating state updates using useReducer hook
----
+# Advanced React Hooks
 
-# The `useReducer` Hook
+**Yesterday**
+- You learnt about useReducer hook
 
-- It is an alternative to `useState` hook.
-- Offers a different way to manage state.
-- Helps us encapsulate all state update logic in a single function.
-- Particularly useful when the new state depends on the previous one.
-- Inspired from a popular state management library called Redux.
-- It got its name from the array .reduce() method.
+**Today**
+- We will learn two advanced hooks, useId and useMemo
 
-## How it works?
+## Two Advanced React hooks
 
-- It works similar to the array .reduce() method.
-- The reducer function takes the current state and an action as input.
-- It then returns a new state.
+- There are actually many hooks
+  - We definitely don't have time to look at all of them
+  - You can even make your own hooks
 
-## How to use it?
-- Can be used within a single component for complex internal logic.
-- Often combined with Context API to share the state.
+- Here are two more hooks for you
+  - We teach these so that you have heard of these
+  
+## Unique IDs with `useId`
 
-## When to use it?
-- **Complex State Shapes**: 
-  - Multiple related values that need to be updated together.
+- useId is a hook used to generate a unique ID
+- It's primarily for accessibility purposes
+- Accessibility attributes require unique IDs to properly associate elements.
+- You cannot hardcode ids in react because a component may be used more than once.
 
-- **State Updates with Complex Logic**: 
-  - Multiple ways to modify the state based on different actions or conditions.
-
-## Basic Syntax
+### Example Usage
 ```javascript
-const [state, dispatch] = useReducer(reducer, initialState);
-```
-
-- **state**: 
-  - The current state managed by the reducer.
-
-- **dispatch**: 
-  - A function that you call to update the state. 
-  - It sends an action to the reducer function.
-
-- **reducer**: 
-  - A function that determines how the state should change in response to actions.
-
-- **initialState**: 
-  - The initial state value of the reducer.
-
-## Reducer Function
-
-The reducer function defines how the state updates in response to actions:
-
-```javascript
-function reducer(state, action) {
-    switch (action.type) {
-        case 'INCREMENT':
-            return { count: state.count + 1 };
-        case 'DECREMENT':
-            return { count: state.count - 1 };
-        default:
-            // throw new Error();
-            return state;
-    }
-}
-```
-
-- The function receives the current state and an action object.
-- The action object has a `type` field that tells the reducer how to update the state.
-
-## Example Usage
-
-
-```javascript
-function Counter() {
-    const initialState = { count: 0 };
-    const [state, dispatch] = useReducer(reducer, initialState);
-
+function TextInputField() {
+    const id = useId();
     return (
-        <>
-            <p>Count: {state.count}</p>
-            <button onClick={() => dispatch({ type: 'INCREMENT' })}>+</button>
-            <button onClick={() => dispatch({ type: 'DECREMENT' })}>-</button>
-        </>
+        <div>
+            <label htmlFor={id}>Name:</label>
+            <input id={id} type="text" name="name"/>
+        </div>
     );
 }
 ```
+- IDs are stable across re-renders (won't change unless the component unmounts).
 
-- This component displays a counter with increment and decrement buttons.
-- Clicking the buttons dispatches actions that are handled by the reducer.
+## Memoization with `useMemo`
+
+- Memoization is an interesting performance enhancement hook.
+- It's mostly used in larger apps.
+- Memoization is storing the results of expensive function calls
+  - You can reuse the old result when the same inputs occur again
+  - This technique is a kind of "caching"
+
+- This improves performance by avoiding redundant work.
+- Useful for avoiding expensive recalculations on every render.
+
+### Syntax
+```javascript
+const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+```
+
+### Example Usage
+```javascript
+function TotalPrice({ quantity, pricePerItem }) {
+    const totalPrice = useMemo(() => {
+        console.log('Calculating total...');
+        return quantity * pricePerItem;
+    }, [quantity, pricePerItem]);
+
+    return <h2>Total Price: ${totalPrice}</h2>;
+}
+```
+
+- In this example, 
+  - totalPrice is only recalculated when `quantity` or `pricePerItem` changes.
+
+## Wrap-Up
+
+- It's common to combine useReducer and useContext
+- React has lots of hooks
+- With useId you can generate unique IDs
+- With useMemo you can cache the results of operations
+
+## Exercise
+
+- https://github.com/DigitalCareerInstitute/spa-store-useidform
+- https://github.com/DigitalCareerInstitute/spa-store-shoppingcart
+
+## Self-Study
+
+- [Self-study prompts](https://react.dev/reference/react/hooks)
