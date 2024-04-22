@@ -1,5 +1,5 @@
 import { NavLink, Outlet, Navigate } from "react-router-dom"
-import { useUser } from "../../store/user-context";
+import useUser from "../../store/use-user";
 import classNames from "classnames";
 
 // import "./index.css";

@@ -1,4 +1,4 @@
-import { useUser } from "../../store/user-context"
+import useUser from "../../store/use-user"
 
 export default function Login() {
     const { signInUser } = useUser();

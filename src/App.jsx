@@ -12,7 +12,7 @@ import Success from "./pages/success";
 import Login from "./pages/login";
 import Posts from "./pages/posts";
 import PostDetails from "./pages/posts/post-details";
-import { UserProvider } from "./store/user-context";
+import UserProvider from "./store/user-provider";
 
 // create a theme context
 export const ThemeContext = createContext(true);
