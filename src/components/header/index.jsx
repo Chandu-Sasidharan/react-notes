@@ -1,11 +1,6 @@
-import { useContext } from "react"
 import { Link } from "react-router-dom"
-import { ThemeContext } from "../../App"
 
 export default function Header() {
-    const { isDarkMode, setIsDarkMode } = useContext(ThemeContext);
-
-    const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
 
     return (
         <div className="bg-slate-200 h-[60px] text-sm flex justify-between items-center pl-3 pr-3">
@@ -17,12 +12,6 @@ export default function Header() {
                     <li><Link to="/posts">Posts</Link></li>
                 </ul>
             </nav>
-            <button
-                className="btn btn-primary btn-xs"
-                onClick={toggleDarkMode}
-            >
-                { isDarkMode ? "Light Mode" : "Dark Mode"}
-            </button>
         </div>
     )
 }

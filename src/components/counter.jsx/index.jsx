@@ -1,5 +1,6 @@
-import { useReducer } from "react";
+import { useReducer, useContext } from "react";
 import classNames from "classnames";
+import { ThemeContext } from "../../App";
 
 function reducer(state, action) {
     if (action.type === 'INCREMENT') {
@@ -13,29 +14,33 @@ function reducer(state, action) {
     return state;
 }
 
-const btnClasses = classNames({
-    "btn btn-primary btn-xs": true
-})
-
 export default function Counter() {
     const initialState = { count: 0 };
     const [state, dispatch] = useReducer(reducer, initialState);
+    const { isDarkMode } = useContext(ThemeContext);
+
+    const btnClasses = classNames({
+        "btn btn-primary btn-xs hover:bg-stone-600 border-0": true,
+        "bg-slate-100 text-slate-900 hover:bg-red-200": isDarkMode
+    })
 
     return (
-        <div className="flex flex-col gap-3 mt-10 items-center">
+        <div className="flex flex-col gap-3 mt-10">
             <p>Count: {state.count}</p>
-            <button 
-                onClick={() => dispatch({ type: 'INCREMENT' })}
-                className={btnClasses}
-            >
-                +
-            </button>
-            <button 
-                onClick={() => dispatch({ type: 'DECREMENT' })}
-                className={btnClasses}
-            >
-                -
-            </button>
+            <div className="space-x-3">
+                <button
+                    onClick={() => dispatch({ type: 'INCREMENT' })}
+                    className={btnClasses}
+                >
+                    +
+                </button>
+                <button
+                    onClick={() => dispatch({ type: 'DECREMENT' })}
+                    className={btnClasses}
+                >
+                    -
+                </button>
+            </div>
         </div>
     );
 }
