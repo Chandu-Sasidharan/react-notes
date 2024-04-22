@@ -14,16 +14,10 @@ export const useUser = () => {
 
 // provider
 export const UserProvider =({ children }) => {
-    const [user, setUser] = useState(null);
+    const userFromLocalStorage = localStorage.getItem("user");
+    const initialState = userFromLocalStorage ? JSON.parse(userFromLocalStorage) : null;
+    const [user, setUser] = useState(initialState);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        const userFromLocalStorage = localStorage.getItem("user");
-
-        if (userFromLocalStorage) {
-            setUser(JSON.parse(userFromLocalStorage));
-        }
-    }, [])
 
     const signInUser = () => {
         // here ypou implement the sigin in logic
@@ -38,6 +32,8 @@ export const UserProvider =({ children }) => {
         localStorage.setItem('user', JSON.stringify(userObject));
         navigate('/')
     }
+
+    console.log(user);
 
     return (
         <UserContext.Provider

@@ -12,7 +12,7 @@ function reducer(state, action) {
     //         // throw new Error();
     //         return state;
     // }
-    
+
     if (action.type === 'INCREMENT') {
         return { count: state.count + 1 };
     }
