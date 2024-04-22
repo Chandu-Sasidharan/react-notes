@@ -8,7 +8,7 @@ export default function Header() {
     const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
 
     return (
-        <div className="bg-slate-200 p-3 text-sm flex justify-between">
+        <div className="bg-slate-200 h-[60px] text-sm flex justify-between items-center pl-3 pr-3">
             <nav>
                 <ul className="flex gap-3">
                     <li><Link to="/">Home</Link></li>

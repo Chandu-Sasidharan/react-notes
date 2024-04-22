@@ -1,11 +1,15 @@
 import { NavLink, Link, Outlet, Navigate } from "react-router-dom"
 import { useUser } from "../../store/user-context";
+import classNames from "classnames";
 
 // import "./index.css";
 
-const isActive = ({ isActive }) => (
-    { backgroundColor: isActive ? "antiquewhite" : "" }
-);
+const classname = ({ isActive }) => {
+    return classNames({
+        "p-1 rounded-md": true,
+        "bg-slate-200": isActive
+    })
+}
 
 export default function Dashboard() {
     const { user } = useUser();
@@ -15,30 +19,37 @@ export default function Dashboard() {
     }
 
     return (
-        <>
-            <div className="fixed top-[80px] left-0 h-full bg-slate-100 w-[200px] p-3">
+        <div 
+            className="flex"
+            style={{ height: 'calc(100vh - 60px'}}
+        >
+            <div className=" bg-slate-100 w-[200px] p-3">
                 <nav className="flex flex-col gap-3">
-                    <Link to="/dashboard">Dashboard Home</Link>
                     <NavLink 
-                        className="p-1 rounded-md"
+                        className={classname}
+                        to="/dashboard"
+                        end
+                    >
+                        Dashboard Home
+                    </NavLink>
+                    <NavLink 
+                        className={classname}
                         to="profile"
-                        style={isActive}
                     >
                         Profile
                     </NavLink>
                     <NavLink 
-                        className="p-1 rounded-md"
+                        className={classname}
                         to="settings"
-                        style={isActive}
                     >
                         Settings
                     </NavLink>
                 </nav>
             </div>
 
-            <main className="ml-[200px] mt-[20px]">
+            <main className="p-3">
                 <Outlet />
             </main>
-        </>
+        </div>
     )
 }
