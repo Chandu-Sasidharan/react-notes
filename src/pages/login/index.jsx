@@ -8,7 +8,7 @@ export default function Login() {
             {/* In real case, you take the form data and pass to to the siginfunc */}
             <button
                 className="btn btn-primary"
-                onClick={signInUser}
+                onClick={() =>signInUser('Alfred Hicthcock')}
             >
                 Login
             </button>

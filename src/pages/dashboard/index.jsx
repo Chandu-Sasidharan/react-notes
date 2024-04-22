@@ -12,9 +12,9 @@ const classname = ({ isActive }) => {
 }
 
 export default function Dashboard() {
-    const { user } = useUser();
+    const { userState } = useUser();
 
-    if (!user) {
+    if (!userState) {
         return <Navigate to="/login" replace />
     }
 

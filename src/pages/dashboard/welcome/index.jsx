@@ -1,7 +1,7 @@
 import useUser from "../../../store/use-user";
 
 export default function Welcome() {
-    const { user } = useUser()
+    const { userState } = useUser()
 
-    return <h1>{`Welcome ${user?.name}`}</h1>
+    return <h1>{`Welcome ${userState.username}`}</h1>
 }
