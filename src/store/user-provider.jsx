@@ -25,11 +25,23 @@ export default function UserProvider({ children }) {
         navigate('/')
     }
 
+    const signOutUser = () => {
+        dispatchUser({ type: "LOGOUT" })
+        navigate('/')
+    }
+
+    const updateUser = (username) => {
+        dispatchUser({ type: "UPDATE_USER", payload: username })
+        navigate('/dashboard')
+    }
+
     return (
         <UserContext.Provider
             value={{
                 userState,
-                signInUser
+                signInUser,
+                signOutUser,
+                updateUser
             }}
         >
             { children } 

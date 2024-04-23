@@ -47,7 +47,7 @@ export default function Dashboard() {
                 </nav>
             </div>
 
-            <main className="p-3">
+            <main className="p-3 grow">
                 <Outlet />
             </main>
         </div>

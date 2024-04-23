@@ -10,7 +10,7 @@ export default function Login() {
                 className="btn btn-primary"
                 onClick={() =>signInUser('Alfred Hicthcock')}
             >
-                Login
+                Login with Email and Password
             </button>
         </div>
     )
